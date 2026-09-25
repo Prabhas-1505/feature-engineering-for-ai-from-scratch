@@ -1,0 +1,71 @@
+site_name: Feature Engineering for AI Engineers — From Scratch
+site_description: Learn production feature engineering by building the systems AI engineers actually deploy.
+site_url: https://prabhas-1505.github.io/feature-engineering-for-ai-from-scratch/
+repo_url: https://github.com/Prabhas-1505/feature-engineering-for-ai-from-scratch
+repo_name: Prabhas-1505/feature-engineering-for-ai-from-scratch
+edit_uri: edit/main/
+# docs_dir points at the repo root so the site publishes the real
+# README/ROADMAP/lessons files directly -- no content duplication.
+# site_dir must live outside docs_dir (mkdocs requirement), so the built
+# site lands one level above the repo, alongside it.
+docs_dir: ..
+site_dir: ../../feature-engineering-for-ai-from-scratch-site
+use_directory_urls: false
+
+exclude_docs: |
+  .git/
+  .venv/
+  .github/
+  .pytest_cache/
+  .ruff_cache/
+  __pycache__/
+  website/site/
+  node_modules/
+  lessons/**/data/
+  lessons/**/code/
+  *.py
+  *.toml
+  *.lock
+  *.cfg
+  Makefile
+  CLAUDE.md
+
+theme:
+  name: material
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: indigo
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: indigo
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+  features:
+    - navigation.instant
+    - navigation.tracking
+    - navigation.top
+    - content.code.copy
+    - toc.follow
+
+markdown_extensions:
+  - admonition
+  - tables
+  - toc:
+      permalink: true
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+
+nav:
+  - Home: README.md
+  - Roadmap: ROADMAP.md
+  - Project Status: PROJECT_STATUS.md
+  - "🟢 Beginner":
+      - 00 Foundations: lessons/beginner/00-foundations/README.md

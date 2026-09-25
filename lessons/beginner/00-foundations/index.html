@@ -1,0 +1,1135 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Learn production feature engineering by building the systems AI engineers actually deploy.">
+      
+      
+      
+        <link rel="canonical" href="https://prabhas-1505.github.io/feature-engineering-for-ai-from-scratch/lessons/beginner/00-foundations/index.html">
+      
+      
+        <link rel="prev" href="../../../PROJECT_STATUS.html">
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>00 Foundations - Feature Engineering for AI Engineers — From Scratch</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#00-foundations" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../../index.html" title="Feature Engineering for AI Engineers — From Scratch" class="md-header__button md-logo" aria-label="Feature Engineering for AI Engineers — From Scratch" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Feature Engineering for AI Engineers — From Scratch
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              00 Foundations
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/Prabhas-1505/feature-engineering-for-ai-from-scratch" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    Prabhas-1505/feature-engineering-for-ai-from-scratch
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../../index.html" title="Feature Engineering for AI Engineers — From Scratch" class="md-nav__button md-logo" aria-label="Feature Engineering for AI Engineers — From Scratch" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Feature Engineering for AI Engineers — From Scratch
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/Prabhas-1505/feature-engineering-for-ai-from-scratch" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    Prabhas-1505/feature-engineering-for-ai-from-scratch
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ROADMAP.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Roadmap
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../PROJECT_STATUS.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Project Status
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🟢 Beginner
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    🟢 Beginner
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    00 Foundations
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="index.html" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    00 Foundations
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#problem" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Problem
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#intuition" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Intuition
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Architecture
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-it-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How It Works
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#naive-implementation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Naive Implementation
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#break-it" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Break It
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#observe-it" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Observe It
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#production-pattern" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Production Pattern
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#architecture-after-fix" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Architecture After Fix
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#implement-it" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Implement It
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#test-it" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Test It
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#scale-it" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Scale It
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#common-mistakes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Common Mistakes
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#interview-mode" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Interview Mode
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#challenge" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Challenge
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Summary
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#next-lesson" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Next Lesson
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#problem" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Problem
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#intuition" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Intuition
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Architecture
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-it-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How It Works
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#naive-implementation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Naive Implementation
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#break-it" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Break It
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#observe-it" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Observe It
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#production-pattern" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Production Pattern
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#architecture-after-fix" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Architecture After Fix
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#implement-it" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Implement It
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#test-it" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Test It
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#scale-it" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Scale It
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#common-mistakes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Common Mistakes
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#interview-mode" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Interview Mode
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#challenge" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Challenge
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Summary
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#next-lesson" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Next Lesson
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="00-foundations">00 — Foundations<a class="headerlink" href="#00-foundations" title="Permanent link">&para;</a></h1>
+<div class="highlight"><pre><span></span><code>Level: 🟢 Beginner
+Prerequisites: Python, pandas basics, what a train/test split is
+Estimated difficulty: 1/5
+You will learn: what a "feature" actually is, why train/serve skew happens,
+  and the one-library fix that eliminates it
+You will build: a synthetic customer dataset, two independent (and
+  disagreeing) naive feature implementations, and a shared feature library
+  that fixes them
+</code></pre></div>
+<h2 id="problem">Problem<a class="headerlink" href="#problem" title="Permanent link">&para;</a></h2>
+<p>A "feature" is just a number computed from raw data — days since signup,
+orders in the last 30 days, average order value. Nothing about that sounds
+hard. The hard part is that in a real system, that number gets computed in
+at least two places: once when you build a training set, and once when you
+serve a live prediction. If those two computations aren't <em>identical</em>, your
+model is scored on data that doesn't match what it was trained on. This is
+called <strong>train/serve skew</strong>, and it's one of the most common — and most
+silent — ways ML systems fail in production. Nothing crashes. The model
+just quietly gets worse.</p>
+<h2 id="intuition">Intuition<a class="headerlink" href="#intuition" title="Permanent link">&para;</a></h2>
+<p>Think of a feature as a pure function: <code>raw_data -&gt; value</code>. The engineering
+problem isn't computing the value once — it's making sure <em>every</em> caller of
+that function, no matter who wrote the calling code or when, gets the exact
+same answer for the exact same input. If two people implement "orders in
+the last 30 days" from a plain-English description, they will make
+different, reasonable-sounding choices — is a boundary order included? What
+does "average order value" mean for a customer with zero orders? Every one
+of those choices is a place skew can creep in.</p>
+<h2 id="architecture">Architecture<a class="headerlink" href="#architecture" title="Permanent link">&para;</a></h2>
+<p>At this stage there's no service, no store, nothing to diagram in Mermaid —
+just two ways of organizing the same script:</p>
+<div class="highlight"><pre><span></span><code>Before (this lesson's bug):
+  raw data ──▶ inline feature code in naive_train.py ──▶ training matrix
+  raw data ──▶ inline feature code in naive_serve.py ──▶ serving matrix
+                     (different code, same intent, different answers)
+
+After (this lesson's fix):
+  raw data ──▶ feature_lib.py ──▶ train.py  ──▶ training matrix
+                     │
+                     └────────▶ serve.py  ──▶ serving matrix
+                     (same code, so nothing can disagree)
+</code></pre></div>
+<h2 id="how-it-works">How It Works<a class="headerlink" href="#how-it-works" title="Permanent link">&para;</a></h2>
+<p>Four features are computed for each customer, as of a fixed point in time
+(<code>AS_OF_DATE</code>): <code>days_since_signup</code>, <code>is_weekend_signup</code>,
+<code>orders_last_30d</code>, <code>avg_order_value</code>. Simple to describe, easy to
+implement two different ways by accident.</p>
+<h2 id="naive-implementation">Naive Implementation<a class="headerlink" href="#naive-implementation" title="Permanent link">&para;</a></h2>
+<p><code>code/naive_train.py</code> computes all four features inline, the way a training
+notebook usually starts. Two choices, made without thinking too hard about
+them:
+- <code>orders_last_30d</code> uses a <strong>strict</strong> window: an order exactly 30 days
+  before <code>AS_OF_DATE</code> does not count.
+- A customer with zero orders gets <code>avg_order_value = 0.0</code>, because the
+  training matrix is about to be fed into <code>LogisticRegression</code>, which can't
+  handle <code>NaN</code>.</p>
+<h2 id="break-it">Break It<a class="headerlink" href="#break-it" title="Permanent link">&para;</a></h2>
+<p><code>code/naive_serve.py</code> re-implements the same four features independently —
+simulating a different engineer, working from a description rather than the
+training code, building the serving path weeks later. It makes two
+different, equally reasonable choices:
+- <code>orders_last_30d</code> uses an <strong>inclusive</strong> window: an order exactly 30 days
+  before <code>AS_OF_DATE</code> <em>does</em> count.
+- A customer with zero orders gets <code>avg_order_value = NaN</code> — there's no
+  sklearn matrix forcing a fill at serving time, so nobody added one.</p>
+<p>Run them in order:</p>
+<div class="highlight"><pre><span></span><code>uv<span class="w"> </span>run<span class="w"> </span>python<span class="w"> </span>lessons/beginner/00-foundations/code/naive_train.py
+uv<span class="w"> </span>run<span class="w"> </span>python<span class="w"> </span>lessons/beginner/00-foundations/code/naive_serve.py
+</code></pre></div>
+<h2 id="observe-it">Observe It<a class="headerlink" href="#observe-it" title="Permanent link">&para;</a></h2>
+<p><code>naive_serve.py</code> loads the feature matrix <code>naive_train.py</code> wrote, recomputes
+its own version of the same features from the same raw data, and prints
+every value where they disagree. On this repo's fixed synthetic dataset
+that's <strong>33 mismatches</strong>: every zero-order customer's <code>avg_order_value</code>
+(<code>0.0</code> vs <code>NaN</code>), and every customer with an order exactly on the 30-day
+boundary — including customer <code>1</code>, whose data was deliberately constructed
+to sit on that boundary — where <code>orders_last_30d</code> differs by exactly one.
+This is a real, executed diff, not a hypothetical.</p>
+<h2 id="production-pattern">Production Pattern<a class="headerlink" href="#production-pattern" title="Permanent link">&para;</a></h2>
+<p>The fix is not "be more careful." It's structural: there is exactly <strong>one</strong>
+implementation of each feature, imported by every caller. <code>code/feature_lib.py</code>
+holds pure functions — same input, same output, always, with the
+window/null-handling choices written down and explained in the docstring
+instead of left implicit in two different files.</p>
+<h2 id="architecture-after-fix">Architecture After Fix<a class="headerlink" href="#architecture-after-fix" title="Permanent link">&para;</a></h2>
+<pre class="mermaid"><code>flowchart LR
+    subgraph Before["Before"]
+        RawA[Raw Data] --&gt; TrainCode[naive_train.py&lt;br/&gt;inline features]
+        RawA --&gt; ServeCode[naive_serve.py&lt;br/&gt;inline features]
+        TrainCode -.-&gt;|33 mismatches| Skew[["⚠️ Train/serve skew"]]
+        ServeCode -.-&gt; Skew
+    end
+    subgraph After["After"]
+        RawB[Raw Data] --&gt; Lib[[feature_lib.py]]
+        Lib --&gt; Train2[train.py]
+        Lib --&gt; Serve2[serve.py]
+    end</code></pre>
+<ul>
+<li><strong><code>feature_lib.py</code></strong> is the only place any feature is defined.</li>
+<li><strong><code>train.py</code></strong> and <strong><code>serve.py</code></strong> both call <code>build_feature_matrix()</code> from
+  it — neither one knows or cares that the other exists, but they can't
+  disagree because they're running the same code.</li>
+</ul>
+<h2 id="implement-it">Implement It<a class="headerlink" href="#implement-it" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code>uv<span class="w"> </span>run<span class="w"> </span>python<span class="w"> </span>lessons/beginner/00-foundations/code/train.py
+uv<span class="w"> </span>run<span class="w"> </span>python<span class="w"> </span>lessons/beginner/00-foundations/code/serve.py
+</code></pre></div>
+<p><code>serve.py</code> runs the same diff check <code>naive_serve.py</code> did. This time:
+<code>No mismatches: train.py and serve.py agree on every feature, for every
+customer, because both call feature_lib.build_feature_matrix.</code></p>
+<h2 id="test-it">Test It<a class="headerlink" href="#test-it" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code>make<span class="w"> </span><span class="nb">test</span>
+</code></pre></div>
+<p><code>test_foundations.py</code> covers this lesson's whole argument as executable
+assertions, not prose:
+- <code>test_naive_train_and_naive_serve_disagree</code> — proves the bug is real:
+  the two naive implementations must disagree on <code>orders_last_30d</code> for
+  customer 1 and <code>avg_order_value</code> for customer 2.
+- <code>test_shared_feature_lib_eliminates_skew</code> — proves the fix works:
+  rebuilding the feature matrix independently through <code>feature_lib</code>
+  produces zero mismatches.
+- <code>test_feature_lib_is_deterministic</code> and two boundary-value unit tests
+  pin down the exact behavior <code>feature_lib</code> commits to.</p>
+<h2 id="scale-it">Scale It<a class="headerlink" href="#scale-it" title="Permanent link">&para;</a></h2>
+<p>This still doesn't scale, on purpose — that's what motivates the rest of
+Beginner:
+- Everything is in-memory pandas; there's no persistent store a real
+  serving process could query without re-deriving from raw CSVs.
+- There's no feature registry — nothing records <em>who</em> owns
+  <code>avg_order_value</code>, what it means, or that its null-handling choice was
+  deliberate.
+- <code>AS_OF_DATE</code> is a single fixed point in time. A real system needs
+  point-in-time-correct joins so that training data for an event in the
+  past only sees data that existed <em>before</em> that event — Lesson 04.
+- Encoding categorical data and scaling numeric data safely (fit only on
+  train, never on the full dataset) isn't covered yet — Lessons 02–03.</p>
+<h2 id="common-mistakes">Common Mistakes<a class="headerlink" href="#common-mistakes" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>Assuming a "shared spec doc" is enough.</strong> It isn't — the naive scripts
+  in this lesson were each "correct" relative to a plausible reading of
+  "count orders in the last 30 days." Docs drift; code that's actually
+  shared can't.</li>
+<li><strong>Filling <code>NaN</code> inconsistently at the edges of a pipeline.</strong> The
+  <code>avg_order_value</code> bug here is exactly this: one path fills nulls because
+  a downstream library forces it to, the other doesn't because nothing
+  forces it — and the fill value becomes part of the feature's definition
+  by accident.</li>
+<li><strong>Treating "the model trains fine" as proof the features are correct.</strong>
+  <code>naive_train.py</code>'s accuracy number (0.55–0.57 on random labels, as
+  expected) says nothing about whether serving will reproduce those
+  features. Skew is invisible in training-time metrics.</li>
+</ul>
+<h2 id="interview-mode">Interview Mode<a class="headerlink" href="#interview-mode" title="Permanent link">&para;</a></h2>
+<ul>
+<li><em>"What is train/serve skew, and how would you detect it in a system you
+  didn't build?"</em> — Compare feature values computed by the training
+  pipeline against the same raw inputs run through the serving path; any
+  disagreement is skew. In production, you'd log serving-time feature
+  values and periodically diff them against a batch recomputation.</li>
+<li><em>"Why is <code>NaN</code> vs <code>0.0</code> for 'no orders' a design decision, not a bug fix
+  choice?"</em> — Because it changes what the feature <em>means</em> to the model:
+  <code>0.0</code> says "this customer spent nothing," <code>NaN</code> says "we don't know."
+  Whichever you pick, every consumer of the feature needs to agree.</li>
+<li><em>"Why not just have serving call the same training code directly?"</em> —
+  Sometimes you can (this lesson's fix is exactly that, in miniature). At
+  scale, training runs in batch over historical data and serving runs
+  per-request in real time — they need the same feature <em>definitions</em> but
+  often different execution paths, which is why Lesson 05 introduces a
+  feature store instead of a shared Python import.</li>
+</ul>
+<h2 id="challenge">Challenge<a class="headerlink" href="#challenge" title="Permanent link">&para;</a></h2>
+<p>Add a fifth feature, <code>days_since_last_order</code>, to <code>feature_lib.py</code> — for a
+customer with no orders, decide (and document, the way <code>avg_order_value</code>
+is documented) what it should return, then add a unit test pinning that
+choice down the way <code>test_avg_order_value_of_no_orders_is_zero_not_nan</code>
+does.</p>
+<h2 id="summary">Summary<a class="headerlink" href="#summary" title="Permanent link">&para;</a></h2>
+<p>A feature is a pure function of raw data. Train/serve skew happens when
+two different implementations of "the same" function exist. The fix isn't
+discipline — it's deleting the second implementation and importing the
+first one.</p>
+<h2 id="next-lesson">Next Lesson<a class="headerlink" href="#next-lesson" title="Permanent link">&para;</a></h2>
+<p><strong>01 — Feature Functions &amp; Testing</strong>: <code>feature_lib.py</code> has four features and
+one test file. The next lesson looks at what breaks when a real feature
+library has fifty features, multiple contributors, and needs tests that
+scale with it.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.instant", "navigation.tracking", "navigation.top", "content.code.copy", "toc.follow"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+    
+  </body>
+</html>

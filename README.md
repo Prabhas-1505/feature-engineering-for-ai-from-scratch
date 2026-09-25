@@ -23,13 +23,16 @@ know Python, pandas, and basic ML concepts (train/test split, what a model
 is). You do **not** need to know feature stores, Kafka, Redis, or
 point-in-time joins — that's what this repo teaches.
 
-## The three levels
+## The two levels
+
+This repo currently scopes to Beginner → Intermediate. See
+[`ROADMAP.md`](ROADMAP.md) for why Expert-tier topics are deliberately out
+of scope for now.
 
 | Level | You'll build | Status |
 |---|---|---|
 | 🟢 **Beginner** | shared feature library → sklearn pipelines → point-in-time joins → offline feature store | [see lessons](lessons/beginner) |
 | 🟡 **Intermediate** | online store → streaming features → validation → versioning → embeddings → serving API | [see lessons](lessons/intermediate) |
-| 🔴 **Expert** | drift monitoring → real-time platform → governance → scale → features for RAG/LLMs | [see lessons](lessons/expert) |
 
 Full curriculum and architecture evolution: [`ROADMAP.md`](ROADMAP.md).
 What's actually built vs. planned right now: [`PROJECT_STATUS.md`](PROJECT_STATUS.md).

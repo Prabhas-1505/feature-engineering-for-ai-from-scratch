@@ -3,6 +3,8 @@
 **Learn production feature engineering by building the systems that AI, ML,
 and Data engineers actually deploy.**
 
+📖 [Read it online](https://prabhas-1505.github.io/feature-engineering-for-ai-from-scratch/) · 💻 [Run it locally](#running-the-current-lesson)
+
 > From an inline pandas script to a production feature platform.
 
 This is not a collection of notes. It's a repository you run. Every concept

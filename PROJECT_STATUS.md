@@ -38,8 +38,15 @@ Update it in the same change as any lesson, service, or doc work.
   08 respectively.
 - `labs/failure-labs/` — none yet.
 - `benchmarks/` — directory doesn't exist yet, no scripts.
-- `website/` — MkDocs Material site not scaffolded yet.
 - CI: no `.github/workflows/` yet.
+
+## Deployed
+
+- GitHub repo: https://github.com/Prabhas-1505/feature-engineering-for-ai-from-scratch
+- Docs site (MkDocs Material, `website/mkdocs.yml`, published to `gh-pages`
+  via `mkdocs gh-deploy`): https://prabhas-1505.github.io/feature-engineering-for-ai-from-scratch/
+  — currently publishes Home, Roadmap, Project Status, and Lesson 00 only,
+  matching what's actually built above.
 
 ## Known Issues
 

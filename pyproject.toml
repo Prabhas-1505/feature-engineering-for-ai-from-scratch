@@ -1,0 +1,25 @@
+[project]
+name = "feature-engineering-for-ai-from-scratch"
+version = "0.1.0"
+description = "Learn production feature engineering by building it, lesson by lesson."
+requires-python = ">=3.12"
+dependencies = [
+    "pandas>=2.2",
+    "scikit-learn>=1.5",
+]
+
+[dependency-groups]
+dev = [
+    "pytest>=8.3",
+    "ruff>=0.6",
+]
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B"]
+
+[tool.pytest.ini_options]
+testpaths = ["lessons", "tests"]
